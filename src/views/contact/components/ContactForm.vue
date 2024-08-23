@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <h1>Home page</h1>
+  <h1>Contact Form Component</h1>
 </template>
 
 <style scoped>

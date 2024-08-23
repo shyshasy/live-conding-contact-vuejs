@@ -2,7 +2,10 @@
 </script>
 
 <template>
-  <h1>Home page</h1>
+  <h1>Welcome to my home page</h1>
+  <p>
+    This is my welcome page of contact web app developed by Simplon students in Mauritania.
+  </p>
 </template>
 
 <style scoped>
