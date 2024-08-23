@@ -5,6 +5,8 @@ import ContactList from "@views/contact/ContactList.vue";
 import ContactAdd from "@views/contact/ContactAdd.vue";
 import ContactEdit from "@views/contact/ContactEdit.vue";
 import ContactShow from "@views/contact/ContactShow.vue";
+import NotFound from "@views/NotFound.vue";
+
 
 const routes = [
     {
@@ -32,6 +34,7 @@ const routes = [
         name: "contact-edit",
         component: ContactEdit
     },
+    { path: "/:pathMatch(.*)*", component: NotFound },
 ];
 
 const router = createRouter({
