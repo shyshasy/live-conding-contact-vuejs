@@ -1,9 +1,34 @@
 import { defineStore } from "pinia";
 
-const useContactStore = defineStore('contactStore', {
+export const useContactStore = defineStore('contactStore', {
     state: () => (
         {
-            contacts: [],
+            contacts: [
+                {
+                    id: 1,
+                    name: "Ag",
+                    number: "32022532",
+                    email: "ag@gmail.com"
+                },
+                {
+                    id: 2,
+                    name: "Aichetou Taher",
+                    number: "34556677",
+                    email: "taher@gmail.com"
+                },
+                {
+                    id: 3,
+                    name: "Harouna FOFANA",
+                    number: "66554433",
+                    email: "harouna@gmail.com"
+                },
+                {
+                    id: 4,
+                    name: "Mariem FOFANA",
+                    number: "66554433",
+                    email: "mariem@gmail.com"
+                }
+            ],
             currentContact: null,
             id: 0
         }
@@ -39,4 +64,4 @@ const useContactStore = defineStore('contactStore', {
             }
         }
     },
-})
+});
