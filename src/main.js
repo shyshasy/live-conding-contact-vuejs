@@ -7,6 +7,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import CustomButton from '@/components/CustomButton.vue'
+import ContactForm from '@views/contact/components/ContactForm.vue'
 
 const pinia = createPinia()
 const app = createApp(App)
@@ -24,6 +25,8 @@ dom.watch();
 
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.component('CustomBtn', CustomButton);
+app.component("ContactForm", ContactForm);
+
 app.use(pinia)
 app.use(router)
 app.mount('#app')

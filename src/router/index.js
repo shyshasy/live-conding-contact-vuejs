@@ -20,7 +20,7 @@ const routes = [
         component: ContactList
     },
     {
-        path: "/contact/:id",
+        path: "/contact/show/:id",
         name: "contact-show",
         component: ContactShow
     },

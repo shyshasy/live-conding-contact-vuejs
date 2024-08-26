@@ -38,9 +38,9 @@ const store = useContactStore();
                 <i class="fas fa-eye"></i>
               </button>
 
-              <button class="btn btn-sm btn-secondary me-2">
+              <router-link :to="{name: 'contact-edit', params: {id: item.id}}" class="btn btn-sm btn-secondary me-2">
                 <i class="fas fa-edit"></i>
-              </button>
+              </router-link>
 
               <button class="btn btn-sm btn-outline-danger">
                 <i class="fas fa-trash"></i>
