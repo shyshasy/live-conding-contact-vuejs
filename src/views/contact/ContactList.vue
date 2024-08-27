@@ -1,6 +1,8 @@
 <script setup>
 import { useContactStore } from "@store/contactStore";
+import { useRouter } from "vue-router";
 const store = useContactStore();
+const route = useRouter();
 </script>
 
 <template>
@@ -34,11 +36,19 @@ const store = useContactStore();
             <td>{{ item.number }}</td>
             <td>{{ item.email }}</td>
             <td>
-              <button class="btn btn-sm btn-primary me-2">
+              <button
+                class="btn btn-sm btn-primary me-2"
+                @click="
+                  store.show(item.id), route.push('/contact/show/' + item.id)
+                "
+              >
                 <i class="fas fa-eye"></i>
               </button>
 
-              <router-link :to="{name: 'contact-edit', params: {id: item.id}}" class="btn btn-sm btn-secondary me-2">
+              <router-link
+                :to="{ name: 'contact-edit', params: { id: item.id } }"
+                class="btn btn-sm btn-secondary me-2"
+              >
                 <i class="fas fa-edit"></i>
               </router-link>
 
