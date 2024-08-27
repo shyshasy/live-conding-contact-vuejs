@@ -1,5 +1,4 @@
 <script setup>
-
 import { useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 import { Modal } from "bootstrap";
@@ -48,8 +47,7 @@ onMounted(() => {
           </div>
           <div class="modal-body">
             <p v-if="store.currentContact.id">
-              <span class="fw-bold">Id : </span
-              >{{ store.currentContact.id }}
+              <span class="fw-bold">Id : </span>{{ store.currentContact.id }}
             </p>
             <p v-if="store.currentContact.name">
               <span class="fw-bold">Name : </span
@@ -65,19 +63,29 @@ onMounted(() => {
             </p>
           </div>
           <div class="modal-footer d-flex justify-content-between">
-            <!-- <div class="right">
+            <div class="right">
               <button
                 aria-label="button edit"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
-                @click="route.push('/contact/edit/:id')"
+                @click="
+                  store.getContactById(store.currentContact.id),
+                    route.push(`/contact/edit/${store.currentContact.id}`)
+                "
               >
-                
+                <i class="fas fa-edit"></i>
               </button>
-              <button aria-label="button edit" class="btn btn-danger ms-1">
-                <img src="../../assets/img/remove.svg" width="20px" alt="" />
+              <button
+                aria-label="button edit"
+                class="btn btn-danger ms-1"
+                @click="
+                  store.remove(store.currentContact.id), route.push('/contact')
+                "
+                data-bs-dismiss="modal"
+              >
+                <i class="fas fa-trash"></i>
               </button>
-            </div> -->
+            </div>
             <button
               type="button"
               class="btn btn-secondary"
