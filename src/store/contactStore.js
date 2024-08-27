@@ -40,12 +40,12 @@ export const useContactStore = defineStore('contactStore', {
         }
     ),
     actions: {
-        getContactById(id){
+        getContactById(id) {
             // const contact =  this.contacts.find(c => c.id == id);
             // if(contact){
             //     Object.assign(this.contactForm, contact)
             // }
-            if(!id) return null;
+            if (!id) return null;
             return this.contacts.find(c => c.id == id);
         },
         add() {
@@ -78,10 +78,11 @@ export const useContactStore = defineStore('contactStore', {
             }
         },
         remove(id) {
-            const contactIndex = this.contacts.findIndex(c => c.id === id);
-            if (contactIndex !== -1) {
-                this.contacts = this.contacts.filter(c => c.id !== id);
+            const confirmation = window.confirm("Êtes-vous sûr de vouloir supprimer ce contact ?");
+            if (confirmation) {
+                this.contacts = this.contacts.filter(contact => contact.id !== id);
             }
         }
+
     },
 });

@@ -1,19 +1,19 @@
 <script setup>
 import { useContactStore } from "@store/contactStore";
 const store = useContactStore();
+function confirmDelete(id) {
+  const confirmation = window.confirm("Êtes-vous sûr de vouloir supprimer ce contact ?");
+  if (confirmation) {
+    store.remove(id);
+  }
+}
 </script>
 
 <template>
   <div>
     <h1>Contact List</h1>
     <div class="btn-right-action mt-4 mb-4 d-flex justify-content-end">
-      <CustomBtn
-        custom-class="btn btn-danger"
-        title="New contact"
-        icon="fas fa-plus"
-        isLink
-        route="contact/new"
-      />
+      <CustomBtn custom-class="btn btn-danger" title="New contact" icon="fas fa-plus" isLink route="contact/new" />
     </div>
     <div class="contact-list-table">
       <table class="table table-hover table-bordered">
@@ -38,11 +38,12 @@ const store = useContactStore();
                 <i class="fas fa-eye"></i>
               </button>
 
-              <router-link :to="{name: 'contact-edit', params: {id: item.id}}" class="btn btn-sm btn-secondary me-2">
+              <router-link :to="{ name: 'contact-edit', params: { id: item.id } }"
+                class="btn btn-sm btn-secondary me-2">
                 <i class="fas fa-edit"></i>
               </router-link>
 
-              <button class="btn btn-sm btn-outline-danger">
+              <button @click="store.remove(item.id)" class="btn btn-sm btn-outline-danger">
                 <i class="fas fa-trash"></i>
               </button>
             </td>
@@ -53,5 +54,4 @@ const store = useContactStore();
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
