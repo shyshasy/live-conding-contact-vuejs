@@ -78,10 +78,9 @@ export const useContactStore = defineStore('contactStore', {
             }
         },
         remove(id) {
-            const confirmation = window.confirm("Êtes-vous sûr de vouloir supprimer ce contact ?");
-            if (confirmation) {
+            
                 this.contacts = this.contacts.filter(contact => contact.id !== id);
-            }
+            
         }
 
     },
