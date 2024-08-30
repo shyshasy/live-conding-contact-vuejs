@@ -49,9 +49,11 @@ export const useContactStore = defineStore('contactStore', {
             return this.contacts.find(c => c.id == id);
         },
         add() {
+            const maxId = this.contacts.length > 0 ? Math.max(...this.contacts.map(c => c.id)) : 0;
+            const newId = maxId + 1;
             this.contacts.push(
                 {
-                    id: this.id++,
+                    id: newId,
                     ...this.contactForm
                 }
             )
