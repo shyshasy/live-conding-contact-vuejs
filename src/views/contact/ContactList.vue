@@ -40,9 +40,11 @@ const handleDeleteContact = (id) => {
               </button>
 
               <!-- Bouton pour éditer le contact -->
-              <button class="btn btn-sm btn-secondary me-2">
+              <router-link :to="{name: 'contact-edit', params: {id: item.id}}" class="btn btn-sm btn-secondary me-2">
+              <!-- Bouton pour éditer le contact -->
+          
                 <i class="fas fa-edit"></i>
-              </button>
+              </router-link>
 
               <!-- Bouton pour supprimer le contact via le composant ContactItem -->
               <ContactItem :contact="item" @deleteContact="handleDeleteContact" />
