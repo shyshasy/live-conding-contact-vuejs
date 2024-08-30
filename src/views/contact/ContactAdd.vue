@@ -6,6 +6,7 @@ const router = useRouter()
 const form = store.contactForm;
 
 const addContact = () => {
+  console.log("hi")
   if (form.name && form.number && form.email) {
     store.add();
     router.push('/contact')
@@ -20,6 +21,7 @@ const addContact = () => {
     <h1>Contact add</h1>
     <div class="contact-add w-50 m-auto">
       <ContactForm @on-submit-form="addContact" />
+
     </div>
   </div>
 </template>
