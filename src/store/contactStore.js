@@ -40,18 +40,20 @@ export const useContactStore = defineStore('contactStore', {
         }
     ),
     actions: {
-        getContactById(id){
+        getContactById(id) {
             // const contact =  this.contacts.find(c => c.id == id);
             // if(contact){
             //     Object.assign(this.contactForm, contact)
             // }
-            if(!id) return null;
+            if (!id) return null;
             return this.contacts.find(c => c.id == id);
         },
         add() {
+            const maxId = this.contacts.length > 0 ? Math.max(...this.contacts.map(c => c.id)) : 0;
+            const newId = maxId + 1;
             this.contacts.push(
                 {
-                    id: this.id++,
+                    id: newId,
                     ...this.contactForm
                 }
             )
@@ -69,7 +71,7 @@ export const useContactStore = defineStore('contactStore', {
                     ...id,
                     newContact
                 }
-            }
+            }            
         },
         show(id) {
             const contactIndex = this.contacts.findIndex(c => c.id === id);
@@ -78,10 +80,10 @@ export const useContactStore = defineStore('contactStore', {
             }
         },
         remove(id) {
-            const contactIndex = this.contacts.findIndex(c => c.id === id);
-            if (contactIndex !== -1) {
-                this.contacts = this.contacts.filter(c => c.id !== id);
-            }
+            
+                this.contacts = this.contacts.filter(contact => contact.id !== id);
+            
         }
+
     },
-});
+}); 

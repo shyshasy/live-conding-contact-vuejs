@@ -81,7 +81,7 @@ const onSubmit = () => {
 </script>
 
 <template>
-  <form @submit.prevent="onSubmit">
+  <form>
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
       <input
@@ -114,24 +114,25 @@ const onSubmit = () => {
         v-model="form.email"
       />
       <div v-if="errors.email" class="text-danger">{{ errors.email }}</div>  
+
     </div>
 
     <div class="mt-5 d-flex justify-content-end">
       <CustomBtn
-        custom-class="btn btn-secondary"
-        class="me-4"
-        title="Contact list"
+        custom-class="btn btn-primary"
+        :title="edit ? 'Save' : 'Submit'"
         isLink
         route="/contact"
+        icon="fas fa-paper-plane"
+        @click="onSubmit"
       />
-      <CustomBtn
+       <!--<CustomBtn
         custom-class="btn btn-primary"
         :title="edit ? 'Save' : 'Submit'"
         icon="fas fa-paper-plane"
-      />
+      /> -->
     </div>
   </form>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
