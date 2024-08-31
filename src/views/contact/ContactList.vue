@@ -1,21 +1,24 @@
 <script setup>
-import { useContactStore } from "@store/contactStore";
+
+
+import { useContactStore } from '@store/contactStore';
 import { useRouter } from "vue-router";
-const store = useContactStore();
+
+import ContactItem from '@views/contact/components/ContactItem.vue';
 const route = useRouter();
+const store = useContactStore();
+
+const handleDeleteContact = (id) => {
+  store.remove(id);
+};
+
 </script>
 
 <template>
   <div>
     <h1>Contact List</h1>
     <div class="btn-right-action mt-4 mb-4 d-flex justify-content-end">
-      <CustomBtn
-        custom-class="btn btn-danger"
-        title="New contact"
-        icon="fas fa-plus"
-        isLink
-        route="contact/new"
-      />
+      <CustomBtn custom-class="btn btn-danger" title="New contact" icon="fas fa-plus" isLink route="contact/new" />
     </div>
     <div class="contact-list-table">
       <table class="table table-hover table-bordered">
@@ -28,10 +31,10 @@ const route = useRouter();
         </thead>
         <tbody>
           <tr v-if="store.contacts.length === 0">
-            <td colspan="4">No data</td>
+            <td colspan="5">No data</td>
           </tr>
           <tr v-for="item in store.contacts" :key="item.id">
-            <td scope="row">{{ `# ${item.id}` }}</td>
+            <td scope="row">{{ `# ${item.id} ` }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.number }}</td>
             <td>{{ item.email }}</td>
@@ -47,14 +50,11 @@ const route = useRouter();
 
               <router-link
                 :to="{ name: 'contact-edit', params: { id: item.id } }"
-                class="btn btn-sm btn-secondary me-2"
-              >
+                class="btn btn-sm btn-secondary me-2">
                 <i class="fas fa-edit"></i>
               </router-link>
 
-              <button class="btn btn-sm btn-outline-danger">
-                <i class="fas fa-trash"></i>
-              </button>
+              <ContactItem :contact="item" @deleteContact="handleDeleteContact" />
             </td>
           </tr>
         </tbody>
@@ -62,6 +62,3 @@ const route = useRouter();
     </div>
   </div>
 </template>
-
-<style scoped>
-</style>
