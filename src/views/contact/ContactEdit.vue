@@ -1,21 +1,23 @@
 <script setup>
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useContactStore } from '@store/contactStore';
 const store = useContactStore();
 
 const emit = defineEmits(["onEditForm"]);
 
 const route = useRoute();
+const router = useRouter()
 const contact = store.getContactById(route.params.id);
 
 const form = store.contactForm;
 
-const editContact = (contact, form) =>{
-  if (form.name && form.number && form.email) {
-    store.edit(contact, form)
-  } else {
-    console.log("Please fill all fields in form");
-  }
+const editContact = () =>{
+  // if (form.name && form.number && form.email) {
+  //   store.edit(contact, form)
+  // } else {
+  //   console.log("Please fill all fields in form");
+  // }
+  router.push('/contact')
 }
 </script>
 
