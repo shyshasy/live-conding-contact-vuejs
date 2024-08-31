@@ -68,12 +68,12 @@ watch(
   },
   { deep: true }
 );
-const isSubmit = false
+// const isSubmit = false
 const onSubmit = () => {
       validate();
     if (!errors.name && !errors.number && !errors.email) {
         emit("onSubmitForm");
-        isSubmit = false;
+        // isSubmit = false;
       }
 };
 
