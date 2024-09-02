@@ -22,7 +22,7 @@ const addContact = () => {
   <div>
     <h1>Contact add</h1>
     <div class="contact-add w-50 m-auto">
-      <ContactForm @on-submit-add-form="addContact" />
+      <ContactForm mode="add" @on-submit-add-form="addContact" />
 
     </div>
   </div>

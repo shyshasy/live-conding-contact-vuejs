@@ -29,7 +29,7 @@ const editContact = () =>{
   <div>
     <h1>Contact edit</h1>
     <div class="contact-add w-50 m-auto">
-      <ContactForm edit :contact="contact" @on-submit-edit-form="editContact"/>
+      <ContactForm mode="edit" :contact="contact" @on-submit-edit-form="editContact"/>
     </div>
   </div>
 </template>

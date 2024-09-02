@@ -73,19 +73,22 @@ export const useContactStore = defineStore("contactStore", {
     },
     edit(id, newContact) {
       console.log(`Edit id is ${id}`);
-      const contactIndex = this.contacts.find((c) => c.id == id);
+      const contactIndex = this.contacts.findIndex((c) => c.id == id);
 
-      //   if (contactIndex !== -1) {
-      //     // this.contacts[contactIndex] = {
-      //     //     ...newContact
-      //     // }
-
-      //   }
+         if (contactIndex !== -1) {
+      this.contacts[contactIndex] = {
+            ...newContact
+      }
+    }
+/*  }
       console.log(newContact);
-      Object.assign(contactIndex, {
-        ...newContact,
-        id: Number(id),
-      });
+      if(contactIndex){
+        Object.assign(contactIndex, {
+            ...newContact,
+            id: Number(id),
+          });
+      }*/
+     
       console.log(this.contacts);
     },
     show(id) {
