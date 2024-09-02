@@ -3,7 +3,7 @@ import { useContactStore } from "@store/contactStore";
 import { watch, reactive } from "vue";
 const store = useContactStore();
 
-const emit = defineEmits(["onSubmitForm"]);
+const emit = defineEmits(["onSubmitAddForm", "onSubmitEditForm"]);
 
 const props = defineProps({
   contact: {
@@ -72,8 +72,13 @@ watch(
 const onSubmit = () => {
       validate();
     if (!errors.name && !errors.number && !errors.email) {
-        emit("onSubmitForm");
-        // isSubmit = false;
+      if(props.edit){
+        console.log("onSubmitEditForm")
+        emit("onSubmitEditForm");
+      }else{
+        console.log("onSubmitAddForm")
+        emit("onSubmitAddForm");
+      }
       }
 };
 
